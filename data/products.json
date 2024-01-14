@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "title": "Apple iPhone 5S",
+        "categoryId": 1
+    },
+    {
+        "id": 2,
+        "title": "Apple iPhone 6S",
+        "categoryId": 1
+    },
+    {
+        "id": 3,
+        "title": "Lenovo VIBE Shot 32GB",
+        "categoryId": 1
+    },
+    {
+        "id": 4,
+        "title": "Xiaomi Redmi 1S",
+        "categoryId": 1
+    },
+    {
+        "id": 5,
+        "title": "Aligator Senior 84",
+        "categoryId": 1
+    },
+    {
+        "id": 6,
+        "title": "AirGrass 478X6",
+        "categoryId": 2
+    },
+    {
+        "id": 7,
+        "title": "Bosch GardenMaster 45X84-6A",
+        "categoryId": 2
+    },
+    {
+        "id": 8,
+        "title": "Arturia Microfreak",
+        "categoryId": 3
+    },
+    {
+        "id": 9,
+        "title": "Korg Volca Sample 2",
+        "categoryId": 3
+    },
+    {
+        "id": 10,
+        "title": "Flétna Yamaha - modrá",
+        "categoryId": 3
+    },
+    {
+        "id": 11,
+        "title": "Iphone 14",
+        "categoryId": 1
+    },
+    {
+        "id": 12,
+        "title": "Nckia N97",
+        "categoryId": 1
+    },
+    {
+        "id": 13,
+        "title": "Lexibook dětský telefon :-)",
+        "categoryId": 1
+    },
+    {
+        "id": 14,
+        "title": "Poop 3s",
+        "categoryId": 1
+    },
+    {
+        "id": 15,
+        "title": "Watch Q8 phone",
+        "categoryId": 1
+    },
+    {
+        "id": 16,
+        "title": "Nokia 3310",
+        "categoryId": 1
+    }
+]
