@@ -1,5 +1,5 @@
 # Little Heureka API
-This API provides a simpler API that is similar to what you might find in Heureka's internal projects.
+A little Heureka API is a simple API which aims to simulate a simple Heureka like API for categories, products and offers.
 
 Written in pure Go using [Chi](https://github.com/go-chi/chi)
 
