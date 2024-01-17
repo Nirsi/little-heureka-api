@@ -7,11 +7,11 @@ Written in pure Go using [Chi](https://github.com/go-chi/chi)
 ### Docker
 ```bash
 # Build the image
-docker build -t little-heu-api .
+docker build -t little-heureka-api .
 ```
 
 ```bash
 # Run the image
-docker run -p 8080:8080 little-heu-api
+docker run -p 8080:8080 little-heureka-api
 ```
 

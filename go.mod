@@ -1,4 +1,4 @@
-module github.com/Nirsi/little-heu
+module github.com/Nirsi/little-heureka-api
 
 go 1.21.6
 
