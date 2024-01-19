@@ -12,6 +12,16 @@
     },
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local server"
+    },
+    {
+      "url": "https://lh-api.fly.dev",
+      "description": "Cloud server"
+    }
+  ],
   "tags": [
     {
       "name": "category",
