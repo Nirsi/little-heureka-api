@@ -146,3 +146,8 @@ func GetOffers(w http.ResponseWriter, r *http.Request) {
 	err = json.NewEncoder(w).Encode(offers[offset:limit])
 
 }
+
+// OpenAPI 3.0.0
+func serveOpenAPI(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./openapi.json")
+}
