@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func GetCategory(w http.ResponseWriter, r *http.Request) {
+func getCategory(w http.ResponseWriter, r *http.Request) {
 	idStr := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -28,16 +28,18 @@ func GetCategory(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func GetCategories(w http.ResponseWriter, r *http.Request) {
+func getCategories(w http.ResponseWriter, r *http.Request) {
 	categories := ReadCategories()
+	response := constructResponse(categories, 0, 0, len(categories))
+
 	w.Header().Set("Content-Type", "application/json")
-	err := json.NewEncoder(w).Encode(categories)
+	err := json.NewEncoder(w).Encode(response)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func GetProduct(w http.ResponseWriter, r *http.Request) {
+func getProduct(w http.ResponseWriter, r *http.Request) {
 	idStr := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -56,7 +58,7 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func GetProducts(w http.ResponseWriter, r *http.Request) {
+func getProducts(w http.ResponseWriter, r *http.Request) {
 	strCategoryId := r.URL.Query().Get("categoryId")
 	var categoryId *int
 	if strCategoryId != "" {
@@ -87,11 +89,13 @@ func GetProducts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	response := constructResponse(products[offset:limit], offset, limit, len(products))
+
 	w.Header().Set("Content-Type", "application/json")
-	err = json.NewEncoder(w).Encode(products[offset:limit])
+	err = json.NewEncoder(w).Encode(response)
 }
 
-func GetOffer(w http.ResponseWriter, r *http.Request) {
+func getOffer(w http.ResponseWriter, r *http.Request) {
 	idStr := r.URL.Query().Get("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -110,7 +114,7 @@ func GetOffer(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func GetOffers(w http.ResponseWriter, r *http.Request) {
+func getOffers(w http.ResponseWriter, r *http.Request) {
 	strProductId := r.URL.Query().Get("productId")
 	var productId *int
 	if strProductId != "" {
@@ -142,12 +146,27 @@ func GetOffers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	response := constructResponse(offers[offset:limit], offset, limit, len(offers))
+
 	w.Header().Set("Content-Type", "application/json")
-	err = json.NewEncoder(w).Encode(offers[offset:limit])
+	err = json.NewEncoder(w).Encode(response)
 
 }
 
 // OpenAPI 3.0.0
 func serveOpenAPI(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./openapi.json")
+}
+
+func constructResponse(data interface{}, offset int, limit int, total int) Response {
+	pageInfo := PageInfo{
+		Offset: offset,
+		Limit:  limit,
+		Total:  total,
+	}
+	response := Response{
+		PageInfo: pageInfo,
+		Data:     data,
+	}
+	return response
 }

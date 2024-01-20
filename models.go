@@ -20,3 +20,14 @@ type Offer struct {
 	ImgURL      string  `json:"imgUrl"`
 	Price       float32 `json:"price"`
 }
+
+type PageInfo struct {
+	Offset int `json:"offset"`
+	Limit  int `json:"limit"`
+	Total  int `json:"total"`
+}
+
+type Response struct {
+	PageInfo PageInfo    `json:"pageInfo"`
+	Data     interface{} `json:"data"`
+}

@@ -26,14 +26,14 @@ func main() {
 		w.Write([]byte("Welcome to little Heureka API. For openAPI documentation go to /docs"))
 	})
 
-	r.Get("/category", GetCategory)
-	r.Get("/categories", GetCategories)
+	r.Get("/category", getCategory)
+	r.Get("/categories", getCategories)
 
-	r.Get("/product", GetProduct)
-	r.Get("/products", GetProducts)
+	r.Get("/product", getProduct)
+	r.Get("/products", getProducts)
 
-	r.Get("/offer", GetOffer)
-	r.Get("/offers", GetOffers)
+	r.Get("/offer", getOffer)
+	r.Get("/offers", getOffers)
 
 	r.Get("/docs", serveOpenAPI)
 
