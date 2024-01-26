@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
+	"time"
 )
 
 func getCategory(w http.ResponseWriter, r *http.Request) {
@@ -155,7 +157,20 @@ func getOffers(w http.ResponseWriter, r *http.Request) {
 
 // OpenAPI 3.0.0
 func serveOpenAPI(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./openapi.json")
+	file, err := os.Open("./openapi.json")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer file.Close()
+
+	fileInfo, err := file.Stat()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	http.ServeContent(w, r, fileInfo.Name(), time.Now(), file)
 }
 
 func constructResponse(data interface{}, offset int, limit int, total int) Response {
