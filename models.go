@@ -27,7 +27,7 @@ type PageInfo struct {
 	Total  int `json:"total"`
 }
 
-type Response struct {
-	PageInfo PageInfo    `json:"pageInfo"`
-	Data     interface{} `json:"data"`
+type Response[T Category | Product | Offer] struct {
+	PageInfo PageInfo `json:"pageInfo"`
+	Data     []T      `json:"data"`
 }

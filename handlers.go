@@ -32,7 +32,7 @@ func getCategory(w http.ResponseWriter, r *http.Request) {
 
 func getCategories(w http.ResponseWriter, r *http.Request) {
 	categories := ReadCategories()
-	response := constructResponse(categories, 0, 0, len(categories))
+	response := constructResponse[Category](categories, 0, 0, len(categories))
 
 	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(response)
@@ -91,7 +91,7 @@ func getProducts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response := constructResponse(products[offset:limit], offset, limit, len(products))
+	response := constructResponse[Product](products[offset:limit], offset, limit, len(products))
 
 	w.Header().Set("Content-Type", "application/json")
 	err = json.NewEncoder(w).Encode(response)
@@ -148,7 +148,7 @@ func getOffers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response := constructResponse(offers[offset:limit], offset, limit, len(offers))
+	response := constructResponse[Offer](offers[offset:limit], offset, limit, len(offers))
 
 	w.Header().Set("Content-Type", "application/json")
 	err = json.NewEncoder(w).Encode(response)
@@ -173,13 +173,13 @@ func serveOpenAPI(w http.ResponseWriter, r *http.Request) {
 	http.ServeContent(w, r, fileInfo.Name(), time.Now(), file)
 }
 
-func constructResponse(data interface{}, offset int, limit int, total int) Response {
+func constructResponse[T Category | Product | Offer](data []T, offset int, limit int, total int) Response[T] {
 	pageInfo := PageInfo{
 		Offset: offset,
 		Limit:  limit,
 		Total:  total,
 	}
-	response := Response{
+	response := Response[T]{
 		PageInfo: pageInfo,
 		Data:     data,
 	}
