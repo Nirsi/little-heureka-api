@@ -22,8 +22,11 @@ func main() {
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
 
+	const message = `Welcome to little Heureka API. For openAPI documentation go to /docs
+If you do not have a wireframe and directions document, both in PDF format, please message the hiring contact.`
+
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Welcome to little Heureka API. For openAPI documentation go to /docs"))
+		w.Write([]byte(message))
 	})
 
 	r.Get("/category", getCategory)
