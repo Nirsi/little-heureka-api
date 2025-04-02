@@ -24,6 +24,10 @@
 # IDEs
 **/.vscode
 **/.idea
+**/.zed
 
 #FlyIO
 fly.toml
+
+# MacOS
+.DS_Store

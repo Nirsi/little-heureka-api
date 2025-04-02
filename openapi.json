@@ -4,13 +4,13 @@
     "title": "Little Heureka API",
     "description": "A little Heureka API is a simple API which aims to simulate a simple Heureka like API for categories, products and offers",
     "contact": {
-      "email": "jan.novak@heureka.cz"
+      "email": "jan.novak@silen.org"
     },
     "license": {
       "name": "MPL 2.0",
       "url": "https://www.mozilla.org/en-US/MPL/2.0/"
     },
-    "version": "1.1.0"
+    "version": "1.1.1"
   },
   "servers": [
     {
@@ -39,9 +39,7 @@
   "paths": {
     "/category": {
       "get": {
-        "tags": [
-          "category"
-        ],
+        "tags": ["category"],
         "summary": "Get Cattegory by ID",
         "parameters": [
           {
@@ -76,9 +74,7 @@
     },
     "/categories": {
       "get": {
-        "tags": [
-          "category"
-        ],
+        "tags": ["category"],
         "summary": "Get all categories",
         "responses": {
           "200": {
@@ -96,9 +92,7 @@
     },
     "/product": {
       "get": {
-        "tags": [
-          "product"
-        ],
+        "tags": ["product"],
         "summary": "Get Product by ID",
         "parameters": [
           {
@@ -133,9 +127,7 @@
     },
     "/products": {
       "get": {
-        "tags": [
-          "product"
-        ],
+        "tags": ["product"],
         "summary": "Get all products",
         "parameters": [
           {
@@ -185,9 +177,7 @@
     },
     "/offer": {
       "get": {
-        "tags": [
-          "offer"
-        ],
+        "tags": ["offer"],
         "summary": "Get Offer by ID",
         "parameters": [
           {
@@ -222,9 +212,7 @@
     },
     "/offers": {
       "get": {
-        "tags": [
-          "offer"
-        ],
+        "tags": ["offer"],
         "summary": "Get all offers",
         "parameters": [
           {
@@ -286,10 +274,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "id",
-          "title"
-        ]
+        "required": ["id", "title"]
       },
       "Product": {
         "type": "object",
@@ -306,11 +291,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "id",
-          "categoryId",
-          "title"
-        ]
+        "required": ["id", "categoryId", "title"]
       },
       "Offer": {
         "type": "object",
